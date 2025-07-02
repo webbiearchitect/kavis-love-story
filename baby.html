@@ -11,7 +11,13 @@
     <source src="baby.mp3" type="audio/mp3" />
     Your browser does not support the audio element.
   </audio>
-
+<script>
+  const music = document.getElementById('bg-music');
+  window.addEventListener('click', () => {
+    music.muted = false;
+    music.play();
+  });
+</script>
   <h1>A New Life, A New Love 👶💞</h1>
   <div class="photo" style="background-image: url('photo1.jpg');"></div>
   <div class="quote">From two hearts in love... comes a heartbeat we’ve yet to meet. Our baby, our joy, our future. 🍼✨</div>
