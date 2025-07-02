@@ -7,22 +7,29 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <audio id="bg-music" autoplay loop muted>
+  <audio id="bg-music" loop>
   <source src="Siru-Thoduthalil-Instrumental.mp3" type="audio/mp3">
 </audio>
 
 <script>
   const bgMusic = document.getElementById('bg-music');
 
-  function startMusic() {
+  // Autoplay workaround for mobile
+  window.addEventListener('click', () => {
     bgMusic.muted = false;
-    bgMusic.play().catch(e => console.log('Play blocked:', e));
-  }
+    bgMusic.play().catch(err => {
+      console.log("Autoplay error:", err);
+    });
+  });
 
-  window.addEventListener('DOMContentLoaded', startMusic);
-  window.addEventListener('click', startMusic);
+  // Try to play when page loads (for desktop)
+  window.addEventListener('DOMContentLoaded', () => {
+    bgMusic.muted = false;
+    bgMusic.play().catch(() => {
+      // Will auto-play after user clicks
+    });
+  });
 </script>
-
   <h1>Happy Birthday, Kavi! 🎉</h1>
   <div class="photo" style="background-image: url('photo1.jpg');"></div>
   <div class="quote">You make my world bloom every day. 🌷</div>
