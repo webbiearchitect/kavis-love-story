@@ -7,31 +7,7 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <audio id="bg-music" loop>
-  <source src="Siru-Thoduthalil-Instrumental.mp3" type="audio/mp3">
-</audio>
-
-<script>
-  const bgMusic = document.getElementById('bg-music');
-
-  // Autoplay workaround for mobile
-  window.addEventListener('click', () => {
-    bgMusic.muted = false;
-    bgMusic.play().catch(err => {
-      console.log("Autoplay error:", err);
-    });
-  });
-
-  // Try to play when page loads (for desktop)
-  window.addEventListener('DOMContentLoaded', () => {
-    bgMusic.muted = false;
-    bgMusic.play().catch(() => {
-      // Will auto-play after user clicks
-    });
-  });
-</script>
-
-
+  
   <h1>Our Journey 🚶‍♂️❤️🚶‍♀️</h1>
   <div class="photo" style="background-image: url('6.jpg');"></div>
   <div class="quote">Side by side, we’ve written a story of forever.</div>
