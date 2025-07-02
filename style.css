@@ -35,6 +35,11 @@ h1 {
   animation: fadeIn 2s ease;
 }
 
+.quote, h1 {
+  color: white;
+  text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.75);
+}
+
 button {
   padding: 10px 20px;
   font-size: 1em;
