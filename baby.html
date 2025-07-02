@@ -7,17 +7,30 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <audio id="bg-music" autoplay loop>
-    <source src="baby.mp3" type="audio/mp3" />
-    Your browser does not support the audio element.
-  </audio>
+  <audio id="bg-music" loop>
+  <source src="baby.mp3" type="audio/mp3">
+</audio>
+
 <script>
-  const music = document.getElementById('bg-music');
+  const bgMusic = document.getElementById('bg-music');
+
+  // Autoplay workaround for mobile
   window.addEventListener('click', () => {
-    music.muted = false;
-    music.play();
+    bgMusic.muted = false;
+    bgMusic.play().catch(err => {
+      console.log("Autoplay error:", err);
+    });
+  });
+
+  // Try to play when page loads (for desktop)
+  window.addEventListener('DOMContentLoaded', () => {
+    bgMusic.muted = false;
+    bgMusic.play().catch(() => {
+      // Will auto-play after user clicks
+    });
   });
 </script>
+
   <h1>A New Life, A New Love 👶💞</h1>
   <div class="photo" style="background-image: url('photo1.jpg');"></div>
   <div class="quote">From two hearts in love... comes a heartbeat we’ve yet to meet. Our baby, our joy, our future. 🍼✨</div>
