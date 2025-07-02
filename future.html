@@ -7,10 +7,30 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <audio id="bg-music" autoplay loop>
-    <source src="birthday-song.mp3" type="audio/mp3" />
-    Your browser does not support the audio element.
-  </audio>
+  <audio id="bg-music" loop>
+  <source src="birthday-song.mp3" type="audio/mp3">
+</audio>
+
+<script>
+  const bgMusic = document.getElementById('bg-music');
+
+  // Autoplay workaround for mobile
+  window.addEventListener('click', () => {
+    bgMusic.muted = false;
+    bgMusic.play().catch(err => {
+      console.log("Autoplay error:", err);
+    });
+  });
+
+  // Try to play when page loads (for desktop)
+  window.addEventListener('DOMContentLoaded', () => {
+    bgMusic.muted = false;
+    bgMusic.play().catch(() => {
+      // Will auto-play after user clicks
+    });
+  });
+</script>
+
 
   <h1>Dreams & Promises 💍</h1>
   <div class="photo" style="background-image: url('photo5.jpg');"></div>
