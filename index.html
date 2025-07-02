@@ -7,28 +7,20 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <audio id="bg-music" loop>
+  <audio id="bg-music" autoplay loop muted>
   <source src="birthday-song.mp3" type="audio/mp3">
 </audio>
 
 <script>
   const bgMusic = document.getElementById('bg-music');
 
-  // Autoplay workaround for mobile
-  window.addEventListener('click', () => {
+  function startMusic() {
     bgMusic.muted = false;
-    bgMusic.play().catch(err => {
-      console.log("Autoplay error:", err);
-    });
-  });
+    bgMusic.play().catch(e => console.log('Play blocked:', e));
+  }
 
-  // Try to play when page loads (for desktop)
-  window.addEventListener('DOMContentLoaded', () => {
-    bgMusic.muted = false;
-    bgMusic.play().catch(() => {
-      // Will auto-play after user clicks
-    });
-  });
+  window.addEventListener('DOMContentLoaded', startMusic);
+  window.addEventListener('click', startMusic);
 </script>
 
   <h1>Happy Birthday, Kavi! 🎉</h1>
