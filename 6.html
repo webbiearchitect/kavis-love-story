@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Final Surprise</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <audio id="bg-music" autoplay loop>
+    <source src="birthday-song.mp3" type="audio/mp3" />
+    Your browser does not support the audio element.
+  </audio>
+
+  <h1>Forever Yours 💖</h1>
+  <div class="photo" style="background-image: url('photo4.jpg');"></div>
+  <div class="quote">You are my always, my everything, my Kavi. Happy Birthday, love!</div>
+  <br />
+  <div class="quote" style="font-size: 1.2em; margin-top: 30px;">
+  P.S. Someone in here can’t wait to call you <strong>Mommy 💕</strong>
+</div>
+<script>
+  document.querySelector('a').addEventListener('click', () => {
+    document.getElementById('bg-music').pause();
+    document.getElementById('bg-music').currentTime = 0;
+  });
+</script>
+
+  <a href="baby.html"><button>Next ❤️</button></a>
+
+  <div class="hearts" id="hearts"></div>
+
+  <script>
+    const hearts = document.getElementById('hearts');
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.innerText = '❤️';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = 3 + Math.random() * 2 + 's';
+      hearts.appendChild(heart);
+      setTimeout(() => heart.remove(), 5000);
+    }
+    setInterval(createHeart, 300);
+  </script>
+</body>
+</html>

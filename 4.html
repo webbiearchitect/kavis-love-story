@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Journey</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <audio id="bg-music" autoplay loop>
+    <source src="birthday-song.mp3" type="audio/mp3" />
+    Your browser does not support the audio element.
+  </audio>
+
+  <h1>Our Journey 🚶‍♂️❤️🚶‍♀️</h1>
+  <div class="photo" style="background-image: url('photo6.jpg');"></div>
+  <div class="quote">Side by side, we’ve written a story of forever.</div>
+  <br />
+  <a href="future.html"><button>Next ❤️</button></a>
+
+  <div class="hearts" id="hearts"></div>
+
+  <script>
+    const hearts = document.getElementById('hearts');
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.innerText = '❤️';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = 3 + Math.random() * 2 + 's';
+      hearts.appendChild(heart);
+      setTimeout(() => heart.remove(), 5000);
+    }
+    setInterval(createHeart, 300);
+  </script>
+</body>
+</html>

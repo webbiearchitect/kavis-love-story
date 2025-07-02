@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>A New Life, A New Love</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <audio id="bg-music" autoplay loop>
+    <source src="baby.mp3" type="audio/mp3" />
+    Your browser does not support the audio element.
+  </audio>
+
+  <h1>A New Life, A New Love 👶💞</h1>
+  <div class="photo" style="background-image: url('photo7.jpg');"></div>
+  <div class="quote">From two hearts in love... comes a heartbeat we’ve yet to meet. Our baby, our joy, our future. 🍼✨</div>
+  <br />
+  <br />
+<a href="index.html"><button>Replay Our Love Story 💞</button></a>
+  
+
+  <div class="hearts" id="hearts"></div>
+
+  <script>
+    const hearts = document.getElementById('hearts');
+    const babyIcons = ['❤️', '🍼', '👣', '🎀', '💖', '🧸'];
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.innerText = babyIcons[Math.floor(Math.random() * babyIcons.length)];
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = 3 + Math.random() * 2 + 's';
+      hearts.appendChild(heart);
+      setTimeout(() => heart.remove(), 5000);
+    }
+    setInterval(createHeart, 300);
+  </script>
+</body>
+</html>
