@@ -5,41 +5,96 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Happy Birthday, Kavi!</title>
   <link rel="stylesheet" href="style.css" />
+  <style>
+    section { display: none; text-align: center; padding: 40px 10px; }
+    section.active { display: block; }
+  </style>
 </head>
 <body>
-  <audio id="bg-music" loop>
-  <source src="Siru-Thoduthalil-Instrumental.mp3" type="audio/mp3">
-</audio>
 
-<script>
-  const bgMusic = document.getElementById('bg-music');
-
-  // Autoplay workaround for mobile
-  window.addEventListener('click', () => {
-    bgMusic.muted = false;
-    bgMusic.play().catch(err => {
-      console.log("Autoplay error:", err);
-    });
-  });
-
-  // Try to play when page loads (for desktop)
-  window.addEventListener('DOMContentLoaded', () => {
-    bgMusic.muted = false;
-    bgMusic.play().catch(() => {
-      // Will auto-play after user clicks
-    });
-  });
-</script>
-  <h1>Happy Birthday, Kavi! 🎉</h1>
-  <div class="photo" style="background-image: url('photo1.jpg');"></div>
-  <div class="quote">You make my world bloom every day. 🌷</div>
-  <br />
-  <a href="memory.html"><button>Next ❤️</button></a>
-
-  <div class="hearts" id="hearts"></div>
+  <!-- 🎵 Music (plays once and continues) -->
+  <audio id="bg-music" autoplay loop muted>
+    <source src="Siru-Thoduthalil-Instrumental.mp3" type="audio/mp3" />
+  </audio>
 
   <script>
-    // Falling hearts
+    const music = document.getElementById('bg-music');
+    window.addEventListener('click', () => {
+      music.muted = false;
+      music.play().catch(e => console.log("Autoplay blocked:", e));
+    });
+    window.addEventListener('DOMContentLoaded', () => {
+      music.muted = false;
+      music.play().catch(() => {});
+    });
+
+    // Navigation between sections
+    function showPage(id) {
+      document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+    }
+  </script>
+
+  <!-- 💖 PAGE 1 -->
+  <section id="page1" class="active">
+    <h1>Happy Birthday, Kavi! 🎉</h1>
+    <div class="photo" style="background-image: url('photo1.jpg');"></div>
+    <div class="quote">You make my world bloom every day. 🌷</div>
+    <br />
+    <button onclick="showPage('page2')">Next ❤️</button>
+  </section>
+
+  <!-- 💖 PAGE 2 -->
+  <section id="page2">
+    <h1>Our Sweet Memories</h1>
+    <div class="photo" style="background-image: url('photo2.jpg');"></div>
+    <div class="quote">Every laugh we shared is a treasure in my heart.</div>
+    <br />
+    <button onclick="showPage('page3')">Next ❤️</button>
+  </section>
+
+  <!-- 💖 PAGE 3 -->
+  <section id="page3">
+    <h1>Why I Love You 💕</h1>
+    <div class="photo" style="background-image: url('photo3.jpg');"></div>
+    <div class="quote">You’re not just my love—you’re my reason, my rhythm, my peace.</div>
+    <br />
+    <button onclick="showPage('page4')">Next ❤️</button>
+  </section>
+
+  <!-- 💖 PAGE 4 -->
+  <section id="page4">
+    <h1>Our Journey 🚶‍♂️❤️🚶‍♀️</h1>
+    <div class="photo" style="background-image: url('6.jpg');"></div>
+    <div class="quote">Side by side, we’ve written a story of forever.</div>
+    <br />
+    <button onclick="showPage('page5')">Next ❤️</button>
+  </section>
+
+  <!-- 💖 PAGE 5 -->
+  <section id="page5">
+    <h1>Dreams & Promises 💍</h1>
+    <div class="photo" style="background-image: url('photo5.jpg');"></div>
+    <div class="quote">The best chapters are yet to come... and I’ll be by your side for every word.</div>
+    <br />
+    <button onclick="showPage('page6')">Next ❤️</button>
+  </section>
+
+  <!-- 💖 PAGE 6 -->
+  <section id="page6">
+    <h1>Forever Yours 💖</h1>
+    <div class="photo" style="background-image: url('photo6.jpg');"></div>
+    <div class="quote">You are my always, my everything, my Kavi. Happy Birthday, love!</div>
+    <div class="quote" style="font-size: 1.2em; margin-top: 30px;">
+      P.S. Someone in here can’t wait to call you <strong>Mommy 💕</strong>
+    </div>
+    <br />
+    <button onclick="showPage('page1')">Replay Our Story 🎬</button>
+  </section>
+
+  <!-- ❤️ Floating Hearts -->
+  <div class="hearts" id="hearts"></div>
+  <script>
     const hearts = document.getElementById('hearts');
     function createHeart() {
       const heart = document.createElement('div');
@@ -52,5 +107,6 @@
     }
     setInterval(createHeart, 300);
   </script>
+
 </body>
 </html>
