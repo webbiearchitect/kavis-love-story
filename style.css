@@ -2,7 +2,7 @@ body {
   margin: 0;
   padding: 0;
   background: linear-gradient(to bottom, #ff9ec4, #ffe6f0);
-  font-family: 'Segoe UI', sans-serif;
+  font-family: 'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif;
   text-align: center;
   color: #fff;
   overflow: hidden;
